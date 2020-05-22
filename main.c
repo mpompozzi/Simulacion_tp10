@@ -25,7 +25,17 @@ int main(void)
 {
     char puerto='a';
     int mask= 0xFF;
+    int var= -3;
     
+    while (var != QUIT)
+    {
+        var= input();
+        if ((var>=0) && (var<=7))
+        {
+            
+        }
+        
+    }
     
     
     return 0;
@@ -63,6 +73,7 @@ int input (void)
     if (conta<=0 || conta>1 || ((letter>-10)&&(letter<0)))
     {
         c=ERROR;
+        printf("Lon ingresado no es valido\n");
     }
     if (letter==-10)
     {
