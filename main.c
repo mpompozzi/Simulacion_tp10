@@ -16,6 +16,8 @@
 #include "PortControl.h"
 #include "const.h"
 
+int input (void);
+
 /*
  * 
  */
