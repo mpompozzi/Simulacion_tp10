@@ -30,6 +30,7 @@ int main(void)
     while (var != QUIT)
     {
         var= input();
+                
         if ((var>=0) && (var<=7))
         {
             
