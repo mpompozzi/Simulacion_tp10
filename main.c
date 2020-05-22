@@ -29,34 +29,45 @@ int main(void)
     return 0;
 }
 
-int getVar (void)   
+int input (void)   
 {
-	int var = getchar();
-	int proximo = getchar();
-	
-	
-	if (proximo == '\n') //si lo ingresado es un numero o una letra, seguido de '\n':
+    int c=0;
+    int conta=0;
+    int letter=0;
+    
+    
+    while ((c=getchar())!='\n')
+    {
+        if ((c >= '0') && (c <= '7')) 
 	{
+            conta++;
+        }
+        else if ( var == 't' || var == 'T' || var == 'c' || var == 'C' || var == 's' || var == 'S'|| var == 'i' || var == 'I')
+        {
+            letter++;
+            conta++;
+        }
+        else if ((c=='Q')||(c=='q'))
+        {
+            letter= -10;
+            conta++;
+        }
+        else
+        {
+            conta=-10;
+        }
+    }
+    
+    if (conta<=0 || conta>1 || ((letter>-10)&&(letter<0)))
+    {
+        c=ERROR;
+    }
+    if (letter==-10)
+    {
+        c=QUIT;
+    }
+    
 	
-		if ((var >= '0' && var <= '7') || var == 't' || var == 'T' || var == 'c' || var == 'C' || var == 's' || var == 'S'|| var == 'i' || var == 'I') //si lo que se ingreso es valido(y no es una 'Q'), devuelve lo que se ha ingresado y continua el programa
-		{
-			next = true;
-		}
-		else if (var == 'q' || var == 'Q') //si se ingreso una 'Q', cambia el valor de next para que termine el programa
-		{
-			next = false;
-		}
-		else //si lo que se ingreso no es valido, devuelve un error y el usuario puede volver a ingresar lo que quiera
-		{
-			var = -1;
-			printf ("Error. Lo que se ha ingresado no es valido. \n");
-		}
-	}
-	else //si luego del primero numero o letra no hay '\n', lo que se ha ingresado no es valido
-	{
-		var = -1;
-		printf ("Error. Lo que se ha ingresado no es valido. \n");
-	}
 	
-	return var;
+	return c;
 }	 

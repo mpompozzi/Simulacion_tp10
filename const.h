@@ -17,6 +17,7 @@
 #define ERROR -1
 #define MASK8 0x01
 #define MASK16 0X0001
+#define QUIT -2
 
 #endif /* CONST_H */
 
