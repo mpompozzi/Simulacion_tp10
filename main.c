@@ -54,7 +54,7 @@ int input (void)
 	{
             conta++;
         }
-        else if ( var == 't' || var == 'T' || var == 'c' || var == 'C' || var == 's' || var == 'S'|| var == 'i' || var == 'I')
+        else if ( c == 't' || c == 'T' || c == 'c' || c == 'C' || c == 's' || c == 'S'|| c == 'i' || c == 'I')
         {
             letter++;
             conta++;
