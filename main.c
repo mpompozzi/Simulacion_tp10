@@ -27,14 +27,29 @@ int main(void)
     int mask= 0xFF;
     int var= -3;
     
+    maskOff(mask, puerto);
+    
     while (var != QUIT)
     {
         var= input();
                 
         if ((var>=0) && (var<=7))
         {
-            
+            bitToggle(var, puerto);
         }
+        else if((var=='s')||(var=='S'))
+        {
+            maskOn(mask,puerto);
+        }
+        else if ((var=='c')||(var=='C'))
+        {
+            maskOff(mask,puerto);
+        }
+        else if ((var=='t')||(var=='T'))
+        {
+            maskToggle (mask,puerto);
+        }
+        
         
     }
     
@@ -74,7 +89,7 @@ int input (void)
     if (conta<=0 || conta>1 || ((letter>-10)&&(letter<0)))
     {
         c=ERROR;
-        printf("Lon ingresado no es valido\n");
+        printf("Lo ingresado no es valido\n");
     }
     if (letter==-10)
     {
