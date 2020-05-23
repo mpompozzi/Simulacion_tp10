@@ -24,11 +24,16 @@ void printInstructions (void);
  */
 int main(void) 
 {
-    char puerto='b';
+    char puerto='a';
     int mask= 0xFF;
     int var= -3;
     
     maskOff(mask, puerto);
+    maskOn(mask,puerto);
+    
+    bitSet(4,puerto);
+            
+            
     
     printPort(puerto);
     
@@ -52,9 +57,9 @@ int main(void)
         {
             maskToggle (mask,puerto);
         }
-        else if (var == QUIT)
+        else if ((var == 'i')||(var == 'I'))
         {
-            printf("BAIII\n");
+            printInstructions();
         }
         else
         {
@@ -129,9 +134,13 @@ void printPort (char puerto)
         {
             printf("*");
         }
-        else
+        else if ((bitGet(i, puerto))==0)
         {
             printf(" ");
+        }
+        else
+        {
+            printf("?");
         }
         printf("|");
     }
