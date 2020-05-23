@@ -234,19 +234,19 @@ void maskOff (int mask, char puerto)
     {
         //Apago los bits que indica la mascara casteando para que sea de 
         //16bits.
-        port.D &= (uint16_t) mask; 
+        port.D &= (uint16_t) ~mask; 
     }
     else if((puerto=='a')||(puerto=='A'))
     {
         //Apago los bits que indica la mascara casteando para que sea de 
         //8bits.
-        port.A &= (uint8_t) mask;
+        port.A &= (uint8_t) ~mask;
     }
     else if ((puerto=='b')||(puerto=='B'))
     {
         //Apago los bits que indica la mascara casteando para que sea de 
         //8bits.
-        port.B &= (uint8_t) mask;
+        port.B &= (uint8_t) ~mask;
     }
     else 
     {
