@@ -113,7 +113,7 @@ void bitClr (int bit, char puerto)
 
 int bitGet (int bit, char puerto)
 {
-    int estado=ERROR;//Inicializo en 
+    int estado=ERROR;//Inicializo en -1
     
     if (((puerto== 'd')||(puerto=='D')) && (bit>=0) && (bit<=15))
     {
