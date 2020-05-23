@@ -16,7 +16,7 @@
 #include "PortControl.h"
 #include "const.h"
 
-int input (void);
+int input (void);       
 void printPort(char puerto);
 void printInstructions (void);
 /*
@@ -24,48 +24,47 @@ void printInstructions (void);
  */
 int main(void) 
 {
-    char puerto='a';
-    int mask= 0xFF;
-    int var= -3;
+    char puerto='a';    //Inicializo en el puerto A
+    int mask= 0xFF;     //Inicializo la mascara en 11111111b
+    int var= -3;        //Inicializo la variable con un valor que no interfiera con las funciones
     
-    maskOff(mask, puerto);
     
-    printInstructions();    
+    maskOff(mask, puerto);  //Apago todos los bit del puerto 
     
-    printPort(puerto);
+    printInstructions();    //Imprimo las instrucciones
     
-    while (var != QUIT)
+    printPort(puerto);      //Imprimo el puerto
+    
+    
+    while (var != QUIT)     //Mientras no se presiones q
     {
-        var= input();
+        var= input();       //Consigo el valor del input
                 
         if ((var>=0) && (var<=7))
         {
-            bitToggle(var, puerto);
+            bitToggle(var, puerto);             //Cambio el estado de un bit al contrario
         }
-        else if((var=='s')||(var=='S'))
+        else if((var=='s')||(var=='S'))         //Si se presiono s
         {
-            maskOn(mask,puerto);
+            maskOn(mask,puerto);                // prendo todos los bits 
         }
-        else if ((var=='c')||(var=='C'))
+        else if ((var=='c')||(var=='C'))        //Si se presiono c
         {
-            maskOff(mask,puerto);
+            maskOff(mask,puerto);               // apago todos kos bit
         }
-        else if ((var=='t')||(var=='T'))
+        else if ((var=='t')||(var=='T'))        //Si se presiono t
         {
-            maskToggle (mask,puerto);
+            maskToggle (mask,puerto);           // prende los bits apagados y apaga los prendidos
         }
-        else if ((var == 'i')||(var == 'I'))
+        else if ((var == 'i')||(var == 'I'))    //Si se presiono i
         {
-            printInstructions();
+            printInstructions();                // imprimo nuevamente las instrucciones
         }
-        else
-        {
-            printf("Estaria bueno aprender a programar\n");
-        }
-        printPort(puerto);
+        
+        printPort(puerto);                      //Imprimo el puerto
         
     }
-    printf("Termino el programa\n");
+    printf("Termino el programa\n");            //Se presiono q y termina el programa
     
     return 0;
 }
@@ -74,47 +73,47 @@ int input (void)
 {
     int c=0;
     int conta=0;
-    int letter=0;
-    int res=0;
+    int out=0;          //Flag para q
+    int res=0;          //Para devolver la respuesta
     
     
     while ((c=getchar())!='\n')
     {
-        if ((c >= '0') && (c <= '7')) 
+        if ((c >= '0') && (c <= '7')) //Si es uno de los numeros de los bites del puerto
 	{
             res *=10;
-            res = (c-'0');
+            res = (c-'0');            // lo almaceno en res pasandolo a int y aumento el contador  
             conta++;
         }
+        //Si es una de las letras para los comandos
         else if ( c == 't' || c == 'T' || c == 'c' || c == 'C' || c == 's' || c == 'S'|| c == 'i' || c == 'I')
         {
-            letter++;
-            conta++;
-            res=c;
+            conta++;     //Aumento el contador
+            res=c;      //La almaceno en res
         }
-        else if ((c=='Q')||(c=='q'))
+        else if ((c=='Q')||(c=='q'))    //En el caso de ser el comando q
         {
-            letter= -10;
-            conta++;
+            out=1;                //Enciendo el flag de q
+            conta++;              //Aumento El contador 
         }
         else
         {
-            conta=-10;
+            conta=-10;                  //Si no es ninguno de los casos anteriores el contador general en -10
         }
     }
     
-    if (conta<=0 || conta>1 || ((letter>-10)&&(letter<0)))
+    if (conta<=0 || conta>1)    //Si el contador es menor a 0 o mayor a 1
     {
-        res=ERROR;
-        printf("Lo ingresado no es valido\n");
-    }
-    if (letter==-10)
-    {
-        res=QUIT;
+        res=ERROR;              //Devuelvo error
+        
+        printf("Lo ingresado no es valido\n");  //y lo imprimo en pantalla
     }
     
-	
-	
+    if (out==1 && conta==1)     //Si se presiono q y el contador es 1
+    {
+        res=QUIT;               //Devuelvo QUIT para salir del programa
+    }
+
 	return res;
 }	
 
@@ -127,18 +126,15 @@ void printPort (char puerto)
     for(i=0; i<=7;i++)
     {
         
-        if(bitGet(i,puerto))
+        if(bitGet(i,puerto))    //Si bitGet devuelve 1, porque el bit esta prendido
         {
-            printf("*");
+            printf("*");        // imprimo un *
         }
-        else if ((bitGet(i, puerto))==0)
+        else                    //Caso contrario (si devuelve un 0) 
         {
-            printf(" ");
+            printf(" ");        // imprimo un espacio
         }
-        else
-        {
-            printf("?");
-        }
+        
         printf("|");
     }
     
