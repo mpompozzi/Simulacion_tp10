@@ -18,12 +18,13 @@
 
 int input (void);
 void printPort(char puerto);
+void printInstructions (void);
 /*
  * 
  */
 int main(void) 
 {
-    char puerto='a';
+    char puerto='b';
     int mask= 0xFF;
     int var= -3;
     
@@ -137,4 +138,16 @@ void printPort (char puerto)
     }
     
     printf("\n");
+}
+
+void printInstructions (void) //Imprime las instrucciones para utilizar el programa
+{
+	printf("* * * * * * * * * *\n");
+	printf("Instrucciones:\n Ingresar: \t (mayusculas o minusculas)\n");
+	printf("-Numero entre el 0 y el 7: led que se quiera prender o apagar.\n");
+	printf("-S: encender todos los leds\n-C: apagar todos los leds.");
+	printf("T: apagar todos los leds encendidos y encender todos los leds apagados.\n");
+	printf("-I: volver a ver las instrucciones\n"); 
+	printf("-Q: terminar el programa.\n"); 
+	printf("* * * * * * * * * *\n\n\n");
 }
