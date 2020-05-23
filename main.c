@@ -29,6 +29,8 @@ int main(void)
     
     maskOff(mask, puerto);
     
+    printPort(puerto);
+    
     while (var != QUIT)
     {
         var= input();
@@ -36,23 +38,35 @@ int main(void)
         if ((var>=0) && (var<=7))
         {
             bitToggle(var, puerto);
+            
+            printPort(puerto);
         }
         else if((var=='s')||(var=='S'))
         {
             maskOn(mask,puerto);
+            printPort(puerto);
         }
         else if ((var=='c')||(var=='C'))
         {
             maskOff(mask,puerto);
+            printPort(puerto);
         }
         else if ((var=='t')||(var=='T'))
         {
             maskToggle (mask,puerto);
+            printPort(puerto);
+        }
+        else if (var == QUIT)
+        {
+            printf("BAIII\n");
+        }
+        else
+        {
+            printf("Estaria bueno aprender a programar\n");
         }
         
-        
     }
-    
+    printf("Termino el programa\n");
     
     return 0;
 }
@@ -62,12 +76,15 @@ int input (void)
     int c=0;
     int conta=0;
     int letter=0;
+    int res=0;
     
     
     while ((c=getchar())!='\n')
     {
         if ((c >= '0') && (c <= '7')) 
 	{
+            res *=10;
+            res -= '0';
             conta++;
         }
         else if ( c == 't' || c == 'T' || c == 'c' || c == 'C' || c == 's' || c == 'S'|| c == 'i' || c == 'I')
@@ -88,17 +105,17 @@ int input (void)
     
     if (conta<=0 || conta>1 || ((letter>-10)&&(letter<0)))
     {
-        c=ERROR;
+        res=ERROR;
         printf("Lo ingresado no es valido\n");
     }
     if (letter==-10)
     {
-        c=QUIT;
+        res=QUIT;
     }
     
 	
 	
-	return c;
+	return res;
 }	
 
 void printPort (char puerto)
