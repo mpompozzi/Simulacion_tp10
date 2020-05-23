@@ -246,7 +246,7 @@ void maskOff (int mask, char puerto)
     {
         //Apago los bits que indica la mascara casteando para que sea de 
         //8bits.
-        port.B &= (uint8_t) (~mask;
+        port.B &= (uint8_t) (~mask);
     }
     else 
     {
