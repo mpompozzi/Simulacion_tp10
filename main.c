@@ -17,7 +17,7 @@
 #include "const.h"
 
 int input (void);
-
+void printPort(char puerto);
 /*
  * 
  */
@@ -84,4 +84,28 @@ int input (void)
 	
 	
 	return c;
-}	 
+}	
+
+void printPort (char puerto)
+{
+    int i=0;
+    int bit=0;
+    
+    printf("|");
+    
+    for(i=0; i<=7;i++)
+    {
+        bit= bitGet(i, puerto);
+        if(bit==0)
+        {
+            printf(" ");
+        }
+        else
+        {
+            printf("*");
+        }
+        printf("|");
+    }
+    
+    printf("\n");
+}
