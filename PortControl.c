@@ -121,7 +121,7 @@ int bitGet (int bit, char puerto)
         //Modifico la mascara para poder encerder el bit indicado.
         mask <<= bit;
         //Verifico el estado actual del bit solicitado.
-        if ((port.D) &= mask)
+        if ((port.D) & mask)
         {
             estado=1;
         }
@@ -136,7 +136,7 @@ int bitGet (int bit, char puerto)
         //Modifico la mascara para poder encerder el bit indicado.
         mask<<= bit;
         //Verifico el estado actual del bit solicitado.
-        if((port.B) &= mask)
+        if((port.B) & mask)
         {
             estado=1;
         }
@@ -152,7 +152,7 @@ int bitGet (int bit, char puerto)
         //Modifico la mascara para poder encerder el bit indicado.
         mask<<= bit;
         //Verifico el estado actual del bit solicitado.
-        if(port.A &= mask)
+        if(port.A & mask)
         {
             estado=1;
         }
