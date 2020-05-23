@@ -29,11 +29,8 @@ int main(void)
     int var= -3;
     
     maskOff(mask, puerto);
-    maskOn(mask,puerto);
     
-    bitSet(4,puerto);
-            
-            
+    printInstructions();    
     
     printPort(puerto);
     
