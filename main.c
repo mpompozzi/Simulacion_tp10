@@ -38,23 +38,18 @@ int main(void)
         if ((var>=0) && (var<=7))
         {
             bitToggle(var, puerto);
-            
-            printPort(puerto);
         }
         else if((var=='s')||(var=='S'))
         {
             maskOn(mask,puerto);
-            printPort(puerto);
         }
         else if ((var=='c')||(var=='C'))
         {
             maskOff(mask,puerto);
-            printPort(puerto);
         }
         else if ((var=='t')||(var=='T'))
         {
             maskToggle (mask,puerto);
-            printPort(puerto);
         }
         else if (var == QUIT)
         {
@@ -64,6 +59,7 @@ int main(void)
         {
             printf("Estaria bueno aprender a programar\n");
         }
+        printPort(puerto);
         
     }
     printf("Termino el programa\n");
@@ -84,13 +80,14 @@ int input (void)
         if ((c >= '0') && (c <= '7')) 
 	{
             res *=10;
-            res -= '0';
+            res = (c-'0');
             conta++;
         }
         else if ( c == 't' || c == 'T' || c == 'c' || c == 'C' || c == 's' || c == 'S'|| c == 'i' || c == 'I')
         {
             letter++;
             conta++;
+            res=c;
         }
         else if ((c=='Q')||(c=='q'))
         {
