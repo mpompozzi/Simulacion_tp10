@@ -68,7 +68,14 @@ int main(void)
     
     return 0;
 }
-
+/*******************************************************************************
+ * Función: input
+ * Descripcción:Función que toma los datos ingresador por el usuario para y los 
+ * devuelve en una variable.
+ * Param:Ninguno.
+ * Salida:Caracter.
+ * 
+ ******************************************************************************/
 int input (void)   
 {
     int c=0;
@@ -116,7 +123,13 @@ int input (void)
 
 	return res;
 }	
-
+/*******************************************************************************
+ * Función: printPort
+ * Descripcción:Función que muestras el estado acual del puerto de 8 bits
+ * Param:Puerto a imprimir
+ * Salida:Ninguno.
+ * 
+ ******************************************************************************/
 void printPort (char puerto)
 {
     int i=0;
@@ -140,8 +153,14 @@ void printPort (char puerto)
     
     printf("\n");
 }
-
-void printInstructions (void) //Imprime las instrucciones para utilizar el programa
+/*******************************************************************************
+ * Función: printInstructions
+ * Descripcción:Función que imprime las instrucciones para utilizar el programa
+ * Param:Ninguno.
+ * Salida:Ninguno.
+ * 
+ ******************************************************************************/
+void printInstructions (void)
 {
 	printf("* * * * * * * * * *\n");
 	printf("Instrucciones:\n Ingresar: \t (mayusculas o minusculas)\n");
